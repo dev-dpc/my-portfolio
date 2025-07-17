@@ -128,7 +128,7 @@ const projects = [
       "Optimized for mobile and desktop viewing with smooth transitions and accessible structure.",
     ],
     tech: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "AOS"],
-    link: "/", // can be homepage
+    link: "https://github.com/dev-dpc/my-portfolio", // can be homepage
   },
 ];
 
