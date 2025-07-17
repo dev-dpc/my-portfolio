@@ -3,7 +3,7 @@ import { Bebas_Neue, Geist, Geist_Mono, Josefin_Sans, Roboto, Source_Code_Pro } 
 import "./globals.css";
 import {ThemeProvider} from "next-themes";
 import ClientAOSProvider from '@/components/ClientAOSProvider';
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

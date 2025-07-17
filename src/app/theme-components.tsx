@@ -136,7 +136,7 @@ export function Introduction() {
   return (
     <div>
         <h1 className="text-5xl font-semibold mb-4" data-aos="fade-up">
-            Hi, I'm <span className="text-blue-400 dark:text-blue-600">
+            Hi, I&apos;m <span className="text-blue-400 dark:text-blue-600">
                 <Typewriter
                 words={['Daniel Cañada', 'a Software Engineer', 'a Problem Solver']}
                 loop={true}
@@ -150,7 +150,7 @@ export function Introduction() {
             
         </h1>
         <p data-aos="fade-up">
-            I'm a curious, adaptable, and solution-driven Software Engineer with a strong foundation in full-stack development. Adept in Ruby on Rails, PHP, Node.js, and React, with experience developing secure, high-performance systems. Demonstrated leadership, UI/UX design skills, and a passion for continuous learning.
+            I&apos;m a curious, adaptable, and solution-driven Software Engineer with a strong foundation in full-stack development. Adept in Ruby on Rails, PHP, Node.js, and React, with experience developing secure, high-performance systems. Demonstrated leadership, UI/UX design skills, and a passion for continuous learning.
         </p>
     </div>
   )
