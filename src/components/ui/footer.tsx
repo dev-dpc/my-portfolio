@@ -42,7 +42,7 @@ export default function Footer() {
             <FaLinkedin />
           </a>
           <a
-            href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/resume.pdf`}
+            href="/my-portfolio/cv-daniel.pdf"
             download="Daniel_Cañada_CV.pdf"
             className="px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-sm font-medium transition"
           >
