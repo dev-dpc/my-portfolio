@@ -3,8 +3,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: isProd ? '/my-portfolio' : '',
-  assetPrefix: isProd ? '/my-portfolio/' : '',
+  basePath: isProd ? '/dev-dpc.github.io' : '',
+  assetPrefix: isProd ? '/dev-dpc.github.io/' : '',
 };
 
 export default nextConfig;
