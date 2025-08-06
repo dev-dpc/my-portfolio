@@ -130,12 +130,19 @@ const projects = [
     tech: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "AOS"],
     link: "https://github.com/dev-dpc/my-portfolio", // can be homepage
   },
+  {
+    title: 'Weather Forecast UI',
+    description: ['A responsive weather dashboard that shows current and 7-day forecast using Open-Meteo API. Built with Next.js, TailwindCSS, and ShadCN components.'],
+    tech: ['Next.js', 'TailwindCSS', 'ShadCN', 'Open-Meteo API'],
+    link: "/weather",
+    // ...other fields like image, link, etc.
+  },
 ];
 
 export function Introduction() {
   return (
-    <div>
-        <h1 className="text-5xl font-semibold mb-4" data-aos="fade-up">
+    <section id="introduction" className="py-8 px-6 text-center">
+        <h1 className="text-5xl font-semibold mb-6 min-h-[6rem]" data-aos="fade-up">
             Hi, I&apos;m <span className="text-blue-400 dark:text-blue-600">
                 <Typewriter
                 words={['Daniel Cañada', 'a Software Engineer', 'a Problem Solver']}
@@ -150,9 +157,9 @@ export function Introduction() {
             
         </h1>
         <p data-aos="fade-up">
-            I&apos;m a curious, adaptable, and solution-driven Software Engineer with a strong foundation in full-stack development. Adept in Ruby on Rails, PHP, Node.js, and React, with experience developing secure, high-performance systems. Demonstrated leadership, UI/UX design skills, and a passion for continuous learning.
+            Adaptable Full-stack Software Engineer specializing in Ruby on Rails, PHP, Node.js, and React. Proven leader with UI/UX design skills, focused on secure, high-performance system development.
         </p>
-    </div>
+    </section>
   )
 }
 

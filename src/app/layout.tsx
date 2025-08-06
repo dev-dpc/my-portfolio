@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${globalFont.className} antialiased`}
+        className={`${globalFont.className} antialiased bg-drafting`}
       >
         <ThemeProvider attribute="class" enableSystem defaultTheme="system">
         <ClientAOSProvider />
