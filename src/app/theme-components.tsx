@@ -3,7 +3,7 @@ import {
   FaReact, FaNodeJs, FaPhp, FaHtml5, FaCss3Alt, FaGit, FaGithub, FaDocker, FaWordpress, FaGraduationCap, FaAward, FaUsers
 } from 'react-icons/fa';
 import {
-  SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript,
+  SiNextdotjs, SiTailwindcss, SiJavascript,
   SiBootstrap, SiMongodb, SiMysql, SiRubyonrails, SiFlutter
 } from 'react-icons/si';
 import { Typewriter } from 'react-simple-typewriter';
@@ -134,7 +134,7 @@ const projects = [
     title: 'Weather Forecast UI',
     description: ['A responsive weather dashboard that shows current and 7-day forecast using Open-Meteo API. Built with Next.js, TailwindCSS, and ShadCN components.'],
     tech: ['Next.js', 'TailwindCSS', 'ShadCN', 'Open-Meteo API'],
-    link: "/weather",
+    link: "/my-portfolio/weather",
     // ...other fields like image, link, etc.
   },
 ];
