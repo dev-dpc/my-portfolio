@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 My Portfolio
 
-## Getting Started
+👋 Hello! I'm **Daniel**, a **Software Engineer** focused on building fast, modern, and user-friendly web applications.
 
-First, run the development server:
+Welcome to my personal portfolio! This project is a modern, responsive website built with **Next.js** to showcase my professional background, key projects, and technical skills.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🔗 Live Site
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can view the live deployment of this portfolio here:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+➡️ **https://dev-dpc.github.io/my-portfolio**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Features
 
-## Learn More
+* **⚡️ Blazing Fast Performance:** Leverages Next.js for server-side rendering (SSR) and static site generation (SSG) for optimal loading times.
+* **🎨 Responsive Design:** Fully optimized layout for seamless viewing across all devices (desktop, tablet, and mobile).
+* **📄 CV/Resume Integration:** Dedicated section for detailed professional history and experience.
+* **📂 Modular Project Showcase:** Easily expandable component structure to add new project details.
+* **⚙️ Hosted via GitHub Pages:** Automated deployment pipeline using GitHub Actions.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is built using a modern JavaScript ecosystem:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Frontend
+* **Next.js:** The React Framework for production.
+* **React:** For building the user interface.
+* **TailWind CSS, ShadCN Components**
+* **TypeScript** 
 
-## Deploy on Vercel
+### Deployment & Tooling
+* **Git / GitHub:** Version control.
+* **GitHub Pages:** Static hosting platform.
+* **Github Workflows:** Custom automation and workflows.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👤 Contact Me
+
+I'm always open to new opportunities and collaborations!
+
+| Platform | Link |
+| :--- | :--- |
+| **Email** | danielpeter.canada@gmail.com |
+| **LinkedIn** |https://www.linkedin.com/in/danielpcañada/ |
+
+---
