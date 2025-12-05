@@ -23,15 +23,16 @@ import {
   TimesheetDialog,
   LeaveRequestDialog,
 } from "@/components/dialogs/create-dialogs";
-
-import {
-  Calendar24
-} from "@/components/dialogs/test-dialog";
+import { OnboardEmployeeDialog } from "@/components/dialogs/onboard-employee-dialog";
+import { LogTaskDialog } from "@/components/dialogs/log-task-dialog";
+import { ViewPaystubDialog } from "@/components/dialogs/view-paystub-dialog";
 
 const DIALOG_COMPONENTS = {
   "create-timesheet": TimesheetDialog,
   "request-leave": LeaveRequestDialog,
-  "view-paystub": Calendar24,
+  "view-paystub": ViewPaystubDialog,
+  "log-task": LogTaskDialog,
+  "onboard-employee": OnboardEmployeeDialog,
   // Add more mappings as you create more dialogs
 } as const;
 

@@ -258,15 +258,150 @@ export function TimesheetDialog({ isOpen, onOpenChange }: { isOpen: boolean; onO
   );
 }
 
+const leaveTypes = [
+  { value: "annual", label: "Annual Leave" },
+  { value: "sick", label: "Sick Leave" },
+  { value: "maternity", label: "Maternity Leave" },
+  { value: "paternity", label: "Paternity Leave" },
+  { value: "unpaid", label: "Unpaid Leave" },
+  { value: "other", label: "Other" },
+];
+
+const leaveRequestSchema = z.object({
+  name: z.string().min(2, { message: "Name is required." }),
+  leaveType: z.string().min(1, { message: "Leave type is required." }),
+  startDate: z.string().min(1, { message: "Start date is required." }),
+  endDate: z.string().min(1, { message: "End date is required." }),
+  reason: z.string().min(5, { message: "Reason must be at least 5 characters." }),
+});
+
 export function LeaveRequestDialog({ isOpen, onOpenChange }: { isOpen: boolean; onOpenChange: (open: boolean) => void }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const form = useForm<z.infer<typeof leaveRequestSchema>>({
+    resolver: zodResolver(leaveRequestSchema),
+    defaultValues: {
+      name: "",
+      leaveType: "",
+      startDate: "",
+      endDate: "",
+      reason: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof leaveRequestSchema>) {
+    setIsSubmitting(true);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      toast.success("Leave request submitted!", {
+        description: `${values.name} requested ${leaveTypes.find(l => l.value === values.leaveType)?.label || values.leaveType} from ${values.startDate} to ${values.endDate}.`,
+      });
+      form.reset();
+      onOpenChange(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error", { description: "Failed to submit leave request." });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className="sm:max-w-[400px]">
         <DialogHeader>
           <DialogTitle>Request Leave</DialogTitle>
-          <DialogDescription>Submit a leave request form here.</DialogDescription>
+          <DialogDescription>Fill out the form to request leave.</DialogDescription>
         </DialogHeader>
-        <p>Leave request form would go here...</p>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="leaveType"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Leave Type</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select leave type" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {leaveTypes.map(type => (
+                        <SelectItem key={type.value} value={type.value}>{type.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="grid grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="startDate"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Start Date</FormLabel>
+                    <FormControl>
+                      <Input type="date" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="endDate"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>End Date</FormLabel>
+                    <FormControl>
+                      <Input type="date" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <FormField
+              control={form.control}
+              name="reason"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Reason</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="Describe your reason for leave..." {...field} rows={3} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" disabled={isSubmitting} className="w-full">
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                "Submit Request"
+              )}
+            </Button>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );
