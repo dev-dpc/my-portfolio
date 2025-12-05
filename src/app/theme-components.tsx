@@ -106,9 +106,9 @@ const educationData = [
 
 const projects = [
   {
-    title: "Mobile App Backend – E-commerce & E-Load",
+    title: "Mobile App Backend - E-commerce & E-Load",
     client: "Quick Bond Plush (Bangladesh)",
-    period: "Feb 2025 – Apr 2025",
+    period: "Feb 2025 - Apr 2025",
     description: [
       "Designed and developed secure RESTful APIs using Node.js and Express.js for a mobile app supporting e-commerce and e-load services.",
       "Implemented JWT authentication, RBAC, and strict input validation to protect user data and endpoints.",
@@ -132,8 +132,9 @@ const projects = [
   },
   {
     title: 'Weather Forecast UI',
+    period: '2025',
     description: ['A responsive weather dashboard that shows current and 7-day forecast using Open-Meteo API. Built with Next.js, TailwindCSS, and ShadCN components.'],
-    tech: ['Next.js', 'TailwindCSS', 'ShadCN', 'Open-Meteo API'],
+    tech: ['Next.js', 'React', 'TailwindCSS', 'ShadCN', 'Open-Meteo API'],
     link: "/my-portfolio/weather",
     // ...other fields like image, link, etc.
   },
@@ -294,7 +295,7 @@ export function Projects() {
             )}
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{proj.period}</p>
 
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1 text-sm">
+            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4 space-y-1 text-sm text-start">
               {proj.description.map((line, i) => (
                 <li key={i}>{line}</li>
               ))}

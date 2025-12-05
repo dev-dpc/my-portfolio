@@ -5,6 +5,8 @@ import {
   TooltipContent,
 } from "@/components/ui/tooltip";
 import { Button } from '@/components/ui/button';
+import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { Switch } from "@/components/ui/switch"
 import { useTheme } from 'next-themes';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import Link from "next/link";
@@ -25,6 +27,30 @@ export function ThemeToggle(){
         </div>
 
     );
+}
+
+export function ThemeToggleMenuItem(){
+  const {theme, setTheme} = useTheme();
+  const handleThemeToggle = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  return (
+    <DropdownMenuItem
+      onSelect={(e) => e.preventDefault()}
+      className="flex items-center justify-between"
+    >
+      <Label htmlFor="theme-toggle" className="cursor-pointer font-normal">
+        <FaMoon className="mr-2 h-4 w-4"/>Dark Theme
+      </Label>
+      <Switch
+        id="theme-toggle"
+        // Set the checked state based on the current theme
+        checked={theme === "dark"}
+        onCheckedChange={handleThemeToggle}
+      />
+    </DropdownMenuItem>
+  );
 }
 
 export function ButtonOne() {
