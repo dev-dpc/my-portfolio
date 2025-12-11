@@ -138,6 +138,13 @@ const projects = [
     link: "/my-portfolio/weather",
     // ...other fields like image, link, etc.
   },
+  {
+    title: 'Dashboard UI',
+    period: '2025',
+    description: ['A modern, responsive dashboard interface built with Next.js and shadcn/ui components. Features a clean design with sidebar navigation, interactive components, and seamless user experience.'],
+    tech: ['Next.js', 'React', 'TailwindCSS', 'shadcn/ui'],
+    link: "/my-portfolio/dashboard-01",
+  },
 ];
 
 export function Introduction() {
