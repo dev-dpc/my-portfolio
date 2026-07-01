@@ -7,8 +7,10 @@ import 'aos/dist/aos.css';
 export default function ClientAOSProvider() {
   useEffect(() => {
     AOS.init({
-      duration: 800,
+      duration: 700,
       once: true,
+      easing: 'ease-out-back',
+      offset: 80,
     });
   }, []);
 
