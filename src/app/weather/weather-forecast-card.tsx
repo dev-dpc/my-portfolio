@@ -1,73 +1,49 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, SetStateAction, useState } from "react";
-import { Card } from "@/components/ui/card";
+import { useState } from "react";
 import { groupForecastData } from "@/utils/format-forecast";
-import { getWeatherIcon } from "@/utils/weather-icons";
-import { WiBarometer, WiSunrise, WiSunset, WiHumidity, WiWindy  } from "react-icons/wi";
-import { motion } from "framer-motion";
+import { getWeatherIcon, getWeatherLabel } from "@/utils/weather-icons";
+import { WiBarometer, WiSunrise, WiSunset, WiHumidity, WiWindy } from "react-icons/wi";
 
-export function ForecastCards({ daily, hourly, timezone }: any) {
-  const [expanded, setExpanded] = useState(0); // Today open
+export function ForecastLog({ daily, hourly, timezone }: any) {
+  const [expanded, setExpanded] = useState(0);
   const forecast = groupForecastData(daily, hourly, timezone);
 
   return (
-    <section className="flex lg:flex-row flex-col gap-4">
-      {forecast.map((day: { date: Key | null | undefined; dayName: string; dayNameShort: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; min: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; max: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; icon: number; wind: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; humidity: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; pressure: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; sunrise: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; sunset: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }, i: SetStateAction<number>) => {
+    <div className="space-y-1">
+      {forecast.map((day: any, i: number) => {
         const isExpanded = i === expanded;
-
         return (
-          <motion.div
-            key={day.date}
-            layout
-            initial={{ borderRadius: 12 }}
-            transition={{ layout: { duration: 0.3, type: "spring", ease: "easeInOut" } }}
-            onClick={() => setExpanded(i)}
-          >
-            <Card
-              className={`cursor-pointer transition-all dark:bg-gray-800 dark:text-white lg:h-[180px] ${
-                isExpanded ? "p-4 w-[260px]" : "px-4 py-2 lg:w-fit w-[260px]"
-              }`}
+          <div key={day.date} className="border-t border-neutral-200 dark:border-neutral-800 first:border-t-0 pt-2 first:pt-0">
+            <button
+              onClick={() => setExpanded(isExpanded ? -1 : i)}
+              className="w-full flex items-center justify-between text-left hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
             >
-              {!isExpanded && (
-                <div className="flex lg:flex-col items-center text-center justify-between lg:h-[180px] py-2">
-                  <span className="font-semibold text-sm">{day.dayNameShort}</span>
-                  <span className="text-sm">{day.max}°C</span>
-                  <span className="text-3xl">{getWeatherIcon(day.icon)}</span>
-                </div>
-              )}
+              <span className="flex items-center gap-2">
+                <span className="text-neutral-400">{isExpanded ? '-' : '+'}</span>
+                {day.dayName.toLowerCase()}.log
+              </span>
+              <span className="flex items-center gap-2 text-neutral-500">
+                {day.min}&deg;/{day.max}&deg;C
+                {getWeatherIcon(day.icon)}
+              </span>
+            </button>
 
-
-              {isExpanded && (
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between items-center">
-                    <span className="font-semibold">{day.dayName}</span>
-                    <span>{day.min}°C / {day.max}°C</span>
-                  </div>
-
-                  <div className="flex items-center justify-between text-2xl">
-                    <span className="text-4xl">{getWeatherIcon(day.icon)}</span>
-                  </div>
-
-                  <div className="flex justify-between">
-                    <span className="flex items-center gap-2"><WiWindy className="text-xl" /> {day.wind} km/h</span>
-                    <span className="flex items-center gap-2"><WiHumidity className="text-xl"/> {day.humidity}%</span>
-                  </div>
-                  <div className="flex">
-                    <span className="flex items-center gap-2"><WiBarometer className="text-xl"/> {day.pressure} hPa</span>
-                  </div>
-                  <div className="flex justify-between text-muted-foreground mt-2">
-                    <span className="flex items-center gap-1"><WiSunrise className="text-xl" /> {day.sunrise}</span>
-                    <span className="flex items-center gap-1"><WiSunset className="text-xl" /> {day.sunset}</span>
-                  </div>
-                </div>
-              )}
-
-            </Card>
-          </motion.div>
+            {isExpanded && (
+              <div className="pl-4 mt-2 mb-3 space-y-2 text-neutral-600 dark:text-neutral-400">
+                <div className="text-5xl">{getWeatherIcon(day.icon)}</div>
+                <p><span className="text-neutral-500">condition:</span> {getWeatherLabel(day.icon)}</p>
+                <p className="flex items-center gap-2"><WiWindy className="text-lg" /><span className="text-neutral-500">wind:</span> {day.wind} km/h</p>
+                <p className="flex items-center gap-2"><WiHumidity className="text-lg" /><span className="text-neutral-500">humidity:</span> {day.humidity}%</p>
+                <p className="flex items-center gap-2"><WiBarometer className="text-lg" /><span className="text-neutral-500">pressure:</span> {day.pressure} hPa</p>
+                <p className="flex items-center gap-2"><WiSunrise className="text-lg" /><span className="text-neutral-500">sunrise:</span> {day.sunrise}</p>
+                <p className="flex items-center gap-2"><WiSunset className="text-lg" /><span className="text-neutral-500">sunset:</span> {day.sunset}</p>
+              </div>
+            )}
+          </div>
         );
       })}
-    </section>
+    </div>
   );
 }

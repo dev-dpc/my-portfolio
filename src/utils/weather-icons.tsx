@@ -19,3 +19,14 @@ export function getWeatherIcon(code: number) {
   if ([95, 96, 99].includes(code)) return <WiThunderstorm className="text-yellow-600" />;
   return <WiNa className="text-muted-foreground" />;
 }
+
+export function getWeatherLabel(code: number) {
+  if ([0].includes(code)) return 'clear_sky';
+  if ([1, 2].includes(code)) return 'partly_cloudy';
+  if ([3, 45, 48].includes(code)) return 'overcast';
+  if ([51, 53, 55, 61, 63, 65, 80, 81].includes(code)) return 'showers';
+  if ([66, 67, 82].includes(code)) return 'rain';
+  if ([71, 73, 75, 77, 85, 86].includes(code)) return 'snow';
+  if ([95, 96, 99].includes(code)) return 'thunderstorm';
+  return 'unknown';
+}

@@ -7,7 +7,6 @@ import {
     YAxis,
     Tooltip,
     ResponsiveContainer,
-    CartesianGrid,
 } from "recharts";
 import { CustomTooltip } from "@/utils/custom-tooltip";
 
@@ -17,60 +16,51 @@ type Props = {
 
 // Custom Y-Axis label (Weather legend by rain %)
 const formatWeatherLegend = (val: number) => {
-    if (val >= 60) return "Heavy";
-    if (val >= 20) return "Rainy";
-    return "Sunny";
+    if (val >= 60) return "heavy";
+    if (val >= 20) return "rainy";
+    return "sunny";
 };
 
 export function RainChart({ data }: Props) {
     return (
-        <section id="rain-chart" className="p-2">
-            <h2 className="text-md font-semibold">Chance of rain</h2>
-            <ResponsiveContainer className="-ml-5" width="100%" height={250}>
+        <div className="mb-10 -ml-4">
+            <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={data}>
-                    {/* Time-based X-axis */}
                     <XAxis
                         dataKey="hour"
-                        stroke="#888"
+                        stroke="currentColor"
+                        className="text-neutral-500"
                         interval={0}
-                        tick={{ fontSize: 12 }}
+                        tick={{ fontSize: 12, fontFamily: 'inherit' }}
                         axisLine={false}
                         tickLine={false}
                     />
 
-                    {/* Rain chance scale → weather condition */}
                     <YAxis
                         domain={[0, 100]}
                         tickFormatter={formatWeatherLegend}
-                        stroke="#888"
-                        tick={{ fontSize: 12 }}
+                        stroke="currentColor"
+                        className="text-neutral-500"
+                        tick={{ fontSize: 12, fontFamily: 'inherit' }}
                         ticks={[0, 30, 70]}
                         axisLine={false}
                         tickLine={false}
                     />
 
-                    <CartesianGrid
-                        horizontal={true}
-                        vertical={false}
-                        strokeDasharray="4 4"
-                        stroke="#ccc"
-                        syncWithTicks={true}
-                    />
-
-                    <Tooltip 
+                    <Tooltip
                         content={<CustomTooltip />}
                         cursor={false}
                     />
 
-                    {/* Bar width reduced */}
                     <Bar
                         dataKey="rain"
-                        fill="#3b82f6"
-                        radius={[4, 4, 0, 0]}
-                        barSize={8}
+                        fill="currentColor"
+                        className="text-emerald-600 dark:text-emerald-400"
+                        radius={0}
+                        barSize={6}
                     />
                 </BarChart>
             </ResponsiveContainer>
-        </section>
+        </div>
     );
 }
