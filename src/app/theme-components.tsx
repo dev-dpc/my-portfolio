@@ -135,7 +135,7 @@ const projects = [
     period: '2025',
     description: ['A responsive weather dashboard that shows current and 7-day forecast using Open-Meteo API. Built with Next.js, TailwindCSS, and ShadCN components.'],
     tech: ['Next.js', 'React', 'TailwindCSS', 'ShadCN', 'Open-Meteo API'],
-    link: "/my-portfolio/weather",
+    link: `${process.env.NEXT_PUBLIC_BASE_PATH}/weather`,
     // ...other fields like image, link, etc.
   }
 ];
