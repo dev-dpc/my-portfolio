@@ -176,4 +176,11 @@ export const projects = [
     tech: ['Next.js', 'React', 'TailwindCSS', 'ShadCN', 'Open-Meteo API'],
     link: `${process.env.NEXT_PUBLIC_BASE_PATH}/weather` as string | null,
   },
+  {
+    title: 'Image Converter',
+    period: '2026',
+    description: ['Converts images between PNG, JPEG, and WebP right in the browser, with quality and resize controls, batch conversion, and zip download. No uploads, no storage — everything is cleared on reload.'],
+    tech: ['Next.js', 'React', 'TypeScript', 'Canvas API', 'JSZip'],
+    link: `${process.env.NEXT_PUBLIC_BASE_PATH}/converter/v1` as string | null,
+  },
 ];
