@@ -14,7 +14,7 @@ import {
 
 const display = Bebas_Neue({ subsets: ['latin'], weight: '400' });
 
-const navItems = ['Intro', 'Stack', 'Work', 'Study', 'Projects', 'Contact'];
+const navItems = ['Intro', 'Stack', 'Work', 'Study', 'Projects', 'Connect'];
 
 const techIconMap = Object.fromEntries(
   Object.values(categorizedTech).flat().map((t) => [t.name.toLowerCase(), t.Icon])
@@ -53,7 +53,7 @@ function Skew({ className = '' }: { className?: string }) {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 overflow-x-hidden">
+    <main className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 overflow-x-clip">
 
       {/* Sticky side nav (desktop) */}
       <nav className="hidden lg:flex flex-col justify-between items-center fixed left-0 top-0 h-screen w-16 py-8 z-40">
@@ -75,15 +75,29 @@ export default function Home() {
       </nav>
 
       {/* Mobile top bar */}
-      <div className="lg:hidden flex justify-between items-center px-6 py-5">
-        <p className={`${display.className} text-xl tracking-widest`}>DPC</p>
-        <ThemeSwitch />
+      <div className="lg:hidden sticky top-0 z-50 flex items-center gap-4 px-6 py-5 bg-white/90 dark:bg-neutral-950/90 backdrop-blur">
+        <p className={`${display.className} text-xl tracking-widest shrink-0`}>DPC</p>
+        <ul className="no-scrollbar flex flex-1 gap-6 items-center overflow-x-auto">
+          {navItems.map((n) => (
+            <li key={n} className="shrink-0">
+              <a
+                href={`#${n.toLowerCase()}`}
+                className={`${display.className} text-sm tracking-[0.2em] hover:text-blue-500 transition-colors`}
+              >
+                {n}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="shrink-0">
+          <ThemeSwitch />
+        </div>
       </div>
 
       <div className="lg:pl-16">
 
         {/* Hero */}
-        <section id="intro" className="relative px-6 sm:px-16 pt-10 sm:pt-24 pb-20 overflow-hidden">
+        <section id="intro" className="relative scroll-mt-17 lg:scroll-mt-0 px-6 sm:px-16 pt-10 sm:pt-24 pb-20 overflow-hidden">
           <span className={`${display.className} absolute -top-4 right-0 sm:right-10 text-[10rem] sm:text-[16rem] leading-none text-neutral-100 dark:text-neutral-900 select-none pointer-events-none`}>
             DC
           </span>
@@ -99,7 +113,7 @@ export default function Home() {
         <Skew className="bg-blue-600" />
 
         {/* Tech stack — color block */}
-        <section id="stack" className="bg-blue-600 text-white px-6 sm:px-16 py-16 sm:py-20">
+        <section id="stack" className="scroll-mt-17 lg:scroll-mt-0 bg-blue-600 text-white px-6 sm:px-16 py-16 sm:py-20">
           <h2 data-aos="fade-down" className={`${display.className} text-4xl sm:text-5xl mb-10 tracking-wide`}>Tools &amp; Tech</h2>
           <div className="space-y-8">
             {Object.entries(categorizedTech).map(([category, items], idx) => (
@@ -127,7 +141,7 @@ export default function Home() {
         <Skew className="bg-blue-600" />
 
         {/* Experience — asymmetric index rows */}
-        <section id="work" className="px-6 sm:px-16 py-20">
+        <section id="work" className="scroll-mt-17 lg:scroll-mt-0 px-6 sm:px-16 py-20">
           <h2 data-aos="fade-down" className={`${display.className} text-4xl sm:text-5xl mb-14 tracking-wide`}>Work</h2>
           <div className="space-y-16">
             {experienceData.map((exp, i) => {
@@ -168,7 +182,7 @@ export default function Home() {
         <Skew className="bg-neutral-900 dark:bg-neutral-100" />
 
         {/* Education — dark block */}
-        <section id="study" className="bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 px-6 sm:px-16 py-16 sm:py-20">
+        <section id="study" className="scroll-mt-17 lg:scroll-mt-0 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 px-6 sm:px-16 py-16 sm:py-20">
           <h2 data-aos="fade-down" className={`${display.className} text-4xl sm:text-5xl mb-14 tracking-wide`}>Study</h2>
           <div className="space-y-12">
             {educationData.map((edu, idx) => (
@@ -192,7 +206,7 @@ export default function Home() {
         <Skew className="bg-neutral-900 dark:bg-neutral-100" />
 
         {/* Projects — magazine spread */}
-        <section id="projects" className="px-6 sm:px-16 py-20">
+        <section id="projects" className="scroll-mt-17 lg:scroll-mt-0 px-6 sm:px-16 py-20">
           <h2 data-aos="fade-down" className={`${display.className} text-4xl sm:text-5xl mb-14 tracking-wide`}>Projects</h2>
           <div className="space-y-20">
             {projects.map((proj, i) => (
@@ -232,7 +246,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="relative px-6 sm:px-16 py-24 border-t border-neutral-200 dark:border-neutral-800 overflow-hidden">
+        <section id="connect" className="relative scroll-mt-17 lg:scroll-mt-0 px-6 sm:px-16 py-24 border-t border-neutral-200 dark:border-neutral-800 overflow-hidden">
           <h2 data-aos="fade-down" className={`${display.className} text-5xl sm:text-7xl mb-10 tracking-wide`}>Let&apos;s talk</h2>
           <div data-aos="fade-down" data-aos-delay="100" className="flex flex-wrap items-center gap-6 sm:gap-10 text-lg mb-16">
             <a href={`mailto:${profile.email}`} className="hover:text-blue-500 transition-colors underline underline-offset-4">Email</a>
